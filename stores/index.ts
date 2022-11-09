@@ -3,8 +3,8 @@ import {
 } from '@harlem/core';
 
 const STATE = {
-    firstName: 'John',
-    lastName: 'Smith'
+    current_time: '',
+    status: ''
 };
 
 export const {
@@ -12,16 +12,20 @@ export const {
     getter,
     mutation,
     ...store
-} = createStore('user', STATE);
+} = createStore('video', STATE);
 
-export const fullName = getter('fullname', state => {
-    return `${state.firstName} ${state.lastName}`;
+export const current_status = getter('current_status', state => {
+    return state.status;
 });
 
-export const setFirstName = mutation('set-first-name', (state, payload: string) => {
-    state.firstName = payload;
+export const time = getter('time', state => {
+    return state.current_time;
 });
 
-export const setLastName = mutation('set-last-name', (state, payload: string) => {
-    state.lastName = payload;
+export const setStatus = mutation('setStatus', (state, payload: string) => {
+    state.status = payload;
+});
+
+export const setTime = mutation('setTime', (state, payload: string) => {
+    state.current_time = payload;
 });
